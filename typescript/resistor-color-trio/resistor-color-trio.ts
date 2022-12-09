@@ -21,7 +21,8 @@ export function decodedResistorValue(selectedColors: string[]) {
     const firstColorIdx = colorsArr.indexOf(formattedColorsArr[0]);
     const secondColorIdx = colorsArr.indexOf(formattedColorsArr[1]);
     const thirdIdx = colorsArr.indexOf(formattedColorsArr[2]);
-    const exponent = secondColorIdx === 0 ? 10 ** thirdIdx + 1 : 10 ** thirdIdx;
+    const exponent =
+      secondColorIdx === 0 ? 10 ** (thirdIdx + 1) : 10 ** thirdIdx;
 
     const returnNumber =
       Number(`${firstColorIdx}${secondColorIdx === 0 ? "" : secondColorIdx}`) *
