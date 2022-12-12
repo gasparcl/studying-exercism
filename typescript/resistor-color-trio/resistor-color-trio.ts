@@ -23,12 +23,15 @@ export function decodedResistorValue(selectedColors: string[]) {
     const thirdIdx = colorsArr.indexOf(formattedColorsArr[2]);
     const exponent =
       secondColorIdx === 0 ? 10 ** (thirdIdx + 1) : 10 ** thirdIdx;
+    const kiloOrGreaterExponent = exponent >= 1000;
 
     const returnNumber =
       Number(`${firstColorIdx}${secondColorIdx === 0 ? "" : secondColorIdx}`) *
       exponent;
 
-    const finalResistance = `${returnNumber} ${
+    const finalResistance = `${
+      kiloOrGreaterExponent ? returnNumber / 1000 : returnNumber
+    } ${kiloOrGreaterExponent ? "kilo" : ""}${
       returnNumber > 1 ? "ohms" : "ohm"
     }`;
 
